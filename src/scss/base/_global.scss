@@ -1,0 +1,55 @@
+body {
+  scroll-behavior: smooth;
+  line-height: 1.5;
+  overflow-x: hidden;
+  margin: 0;
+  position: relative;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+hr {
+  border-width: 0;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+h1 {
+  color: red;
+  transition: 1s;
+}
+
+::placeholder {
+  color: blue;
+}
