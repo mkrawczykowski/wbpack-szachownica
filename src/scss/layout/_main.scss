@@ -58,11 +58,19 @@
       &.black {
         background-color: #000;
         transition: 0.2s;
+
+        &.potentialMove {
+          background-color: rgb(3, 70, 18);
+        }
       }
 
       &.white {
         background-color: #fff;
         transition: 0.2s;
+
+        &.potentialMove {
+          background-color: rgb(6, 165, 40);
+        }
       }
     }
   }
@@ -72,7 +80,7 @@
     grid-column: 2;
     justify-items: center;
 
-    .game-border {
+    .game-area {
       border: 4px solid #000;
       justify-self: center;
       position: relative;

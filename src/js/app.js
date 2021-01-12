@@ -24,7 +24,7 @@ import { setPiecesOnChessBoard, stylesFromPositions } from './class-pieces.js';
 import { PIECESONCHESSBOARD } from './constants.js';
 import possibleMoves from './piece-onclick.js';
 
-let gameArea = document.getElementsByClassName('game-border');
+let gameArea = document.getElementsByClassName('game-area');
 let lettersTop = document.getElementsByClassName('chess-board__letters--top');
 let lettersBottom = document.getElementsByClassName('chess-board__letters--bottom');
 let numbersLeft = document.getElementsByClassName('chess-board__numbers--left');
@@ -55,35 +55,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   };
 
-
   setPiecesOnChessBoard();
   console.log(PIECESONCHESSBOARD);
 
   for (const property in PIECESONCHESSBOARD) {
     console.log(`${property}: `);
 
-    gameAreaFirst.innerHTML += `<div class="piece game-border__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}" data-type="${PIECESONCHESSBOARD[property].type}"></div>`;
+    gameAreaFirst.innerHTML += `<div class="piece game-area__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}" data-type="${PIECESONCHESSBOARD[property].type}"></div>`;
 
-
-    // console.log(`[data-column="${PIECESONCHESSBOARD[property].col}"][data-row="${PIECESONCHESSBOARD[property].row}"]`);
     let singlePiece = `[data-column="${PIECESONCHESSBOARD[property].col}"][data-row="${PIECESONCHESSBOARD[property].row}"].game__column`;
     console.log(document.querySelectorAll(singlePiece)[0]);
     document.querySelectorAll(singlePiece)[0].classList.add('occupied');
   }
 
-
-
   let pieces = document.getElementsByClassName('piece');
-  console.log(pieces);
-
-  // nie działa, piece data-row zawsze wyrzuca 7 = klika we wszystkie pieces z klasą?
-
-  // for (var i = 0; i < pieces.length; i++) {
-  //   var piece = pieces[i];
-  //   piece.onclick = function () {
-  //     console.log(piece);
-  //   }
-  // }
 
   document.addEventListener('click', function (object) {
 
@@ -93,18 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
       piece.classList.remove('active');
     }
 
-
     if (object.path[0].classList.contains('piece')) {
 
       object.path[0].classList.add('active');
-      console.log(possibleMoves(object.path[0]));
+      possibleMoves(object.path[0]);
     }
   });
-
-
-
 
 });
 
 
-// NAPISZ: POLE POWINNO DOSTAWAĆ PARAMETR INFORMUJĄCY, ŻE JEST ZAJĘTE. WTEDY NIE PODDŚWIETLI SIĘ, GDY AKTYWUJESZ FIGURĘ
