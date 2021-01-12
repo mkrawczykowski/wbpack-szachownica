@@ -59,7 +59,7 @@
         background-color: #000;
         transition: 0.2s;
 
-        &.potentialMove {
+        &.possibleMove {
           background-color: rgb(3, 70, 18);
         }
       }
@@ -68,7 +68,7 @@
         background-color: #fff;
         transition: 0.2s;
 
-        &.potentialMove {
+        &.possibleMove {
           background-color: rgb(6, 165, 40);
         }
       }

@@ -78,6 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
       piece.classList.remove('active');
     }
 
+    //wygaszanie zaznaczonych pól
+    document.querySelectorAll('.game__column').forEach(elementColumn => {
+      elementColumn.classList.remove('possibleMove');
+    });
+
     if (object.path[0].classList.contains('piece')) {
 
       object.path[0].classList.add('active');

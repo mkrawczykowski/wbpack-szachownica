@@ -10,7 +10,7 @@ export default function possibleMoves(activePiece) {
 
     for (let x = 0; x < rookMovementColumn.length; x++) {
       console.log(rookMovementColumn[x]);
-      rookMovementColumn[x].classList.add('potentialMove');
+      rookMovementColumn[x].classList.add('possibleMove');
     };
   }
 }
