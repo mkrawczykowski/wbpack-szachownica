@@ -31,14 +31,14 @@ function setPiecesOnChessBoard() {
   PIECESONCHESSBOARD.E1 = new Piece('queen', 'white', 'E', 1);
 
   //piony
-  PIECESONCHESSBOARD.A2 = new Piece('pawn', 'white', 'A', 2);
-  PIECESONCHESSBOARD.B2 = new Piece('pawn', 'white', 'B', 2);
-  PIECESONCHESSBOARD.C2 = new Piece('pawn', 'white', 'C', 2);
-  PIECESONCHESSBOARD.D2 = new Piece('pawn', 'white', 'D', 2);
-  PIECESONCHESSBOARD.E2 = new Piece('pawn', 'white', 'E', 2);
-  PIECESONCHESSBOARD.F2 = new Piece('pawn', 'white', 'F', 2);
-  PIECESONCHESSBOARD.G2 = new Piece('pawn', 'white', 'G', 2);
-  PIECESONCHESSBOARD.H2 = new Piece('pawn', 'white', 'H', 2);
+  // PIECESONCHESSBOARD.A2 = new Piece('pawn', 'white', 'A', 2);
+  // PIECESONCHESSBOARD.B2 = new Piece('pawn', 'white', 'B', 2);
+  // PIECESONCHESSBOARD.C2 = new Piece('pawn', 'white', 'C', 2);
+  // PIECESONCHESSBOARD.D2 = new Piece('pawn', 'white', 'D', 2);
+  // PIECESONCHESSBOARD.E2 = new Piece('pawn', 'white', 'E', 2);
+  // PIECESONCHESSBOARD.F2 = new Piece('pawn', 'white', 'F', 2);
+  // PIECESONCHESSBOARD.G2 = new Piece('pawn', 'white', 'G', 2);
+  // PIECESONCHESSBOARD.H2 = new Piece('pawn', 'white', 'H', 2);
 
 
   // król i królowa stoją odwrotnie!
@@ -64,14 +64,14 @@ function setPiecesOnChessBoard() {
   PIECESONCHESSBOARD.E8 = new Piece('queen', 'black', 'E', 8);
 
   //piony
-  PIECESONCHESSBOARD.A7 = new Piece('pawn', 'black', 'A', 7);
-  PIECESONCHESSBOARD.B7 = new Piece('pawn', 'black', 'B', 7);
-  PIECESONCHESSBOARD.C7 = new Piece('pawn', 'black', 'C', 7);
-  PIECESONCHESSBOARD.D7 = new Piece('pawn', 'black', 'D', 7);
-  PIECESONCHESSBOARD.E7 = new Piece('pawn', 'black', 'E', 7);
-  PIECESONCHESSBOARD.F7 = new Piece('pawn', 'black', 'F', 7);
-  PIECESONCHESSBOARD.G7 = new Piece('pawn', 'black', 'G', 7);
-  PIECESONCHESSBOARD.H7 = new Piece('pawn', 'black', 'H', 7);
+  // PIECESONCHESSBOARD.A7 = new Piece('pawn', 'black', 'A', 7);
+  // PIECESONCHESSBOARD.B7 = new Piece('pawn', 'black', 'B', 7);
+  // PIECESONCHESSBOARD.C7 = new Piece('pawn', 'black', 'C', 7);
+  // PIECESONCHESSBOARD.D7 = new Piece('pawn', 'black', 'D', 7);
+  // PIECESONCHESSBOARD.E7 = new Piece('pawn', 'black', 'E', 7);
+  // PIECESONCHESSBOARD.F7 = new Piece('pawn', 'black', 'F', 7);
+  // PIECESONCHESSBOARD.G7 = new Piece('pawn', 'black', 'G', 7);
+  // PIECESONCHESSBOARD.H7 = new Piece('pawn', 'black', 'H', 7);
 
 }
 
