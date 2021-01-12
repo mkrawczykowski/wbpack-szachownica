@@ -2,6 +2,7 @@ export default function possibleMoves(activePiece) {
   // return activePiece.dataset.type;
   switch (activePiece.dataset.type) {
     case 'rook': rookPossibleMovement(); break;
+    case 'knight': knightPossibleMovement(); break;
   }
 
   function rookPossibleMovement() {
@@ -10,7 +11,9 @@ export default function possibleMoves(activePiece) {
 
     for (let x = 0; x < rookMovementColumn.length; x++) {
       console.log(rookMovementColumn[x]);
-      rookMovementColumn[x].classList.add('possibleMove');
+      if (!rookMovementColumn[x].classList.contains('occupied')) {
+        rookMovementColumn[x].classList.add('possibleMove');
+      }
     };
   }
 }

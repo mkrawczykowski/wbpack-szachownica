@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   setPiecesOnChessBoard();
-  console.log(PIECESONCHESSBOARD);
 
   for (const property in PIECESONCHESSBOARD) {
     console.log(`${property}: `);

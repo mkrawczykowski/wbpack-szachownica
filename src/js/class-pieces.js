@@ -31,7 +31,7 @@ function setPiecesOnChessBoard() {
   PIECESONCHESSBOARD.E1 = new Piece('queen', 'white', 'E', 1);
 
   //piony
-  // PIECESONCHESSBOARD.A2 = new Piece('pawn', 'white', 'A', 2);
+  // PIECESONCHESSBOARD.A2 = new Piece('pawn', 'white', 'H', 2);
   // PIECESONCHESSBOARD.B2 = new Piece('pawn', 'white', 'B', 2);
   // PIECESONCHESSBOARD.C2 = new Piece('pawn', 'white', 'C', 2);
   // PIECESONCHESSBOARD.D2 = new Piece('pawn', 'white', 'D', 2);
@@ -71,7 +71,7 @@ function setPiecesOnChessBoard() {
   // PIECESONCHESSBOARD.E7 = new Piece('pawn', 'black', 'E', 7);
   // PIECESONCHESSBOARD.F7 = new Piece('pawn', 'black', 'F', 7);
   // PIECESONCHESSBOARD.G7 = new Piece('pawn', 'black', 'G', 7);
-  // PIECESONCHESSBOARD.H7 = new Piece('pawn', 'black', 'H', 7);
+  PIECESONCHESSBOARD.H7 = new Piece('rook', 'white', 'H', 8);
 
 }
 
@@ -98,7 +98,9 @@ function stylesFromPositions(col, row) {
       break;
   }
 
-  return `style="left: ${leftFromCol};"`;
+  let topFromRow = row * 100 - 100 + 'px';
+
+  return `style="left: ${leftFromCol}; top: ${topFromRow};"`;
 
 }
 
