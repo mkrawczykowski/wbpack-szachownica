@@ -77,9 +77,19 @@
     grid-column: 2;
     justify-items: center;
 
-    .game__border {
+    .game-border {
       border: 4px solid #000;
       justify-self: center;
+      position: relative;
+
+      &__piece-test {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url("../images/rook-white.png") no-repeat center center;
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 }

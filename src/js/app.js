@@ -20,9 +20,10 @@ import '../scss/app.scss';
 import lettersHtml from './generate-letters.js';
 import numbersHtml from './generate-numbers.js';
 import chessBoardHtml from './generate-chess-board.js';
+import setPiecesOnChessBoard from './class-pieces.js';
+import { PIECESONCHESSBOARD } from './constants.js';
 
-
-let gameArea = document.getElementsByClassName('game__border');
+let gameArea = document.getElementsByClassName('game-border');
 let lettersTop = document.getElementsByClassName('chess-board__letters--top');
 let lettersBottom = document.getElementsByClassName('chess-board__letters--bottom');
 let numbersLeft = document.getElementsByClassName('chess-board__numbers--left');
@@ -31,7 +32,7 @@ let numbersRight = document.getElementsByClassName('chess-board__numbers--right'
 document.addEventListener("DOMContentLoaded", function () {
 
   let gameAreaFirst = gameArea[0];
-  gameAreaFirst.innerHTML = chessBoardHtml;
+  gameAreaFirst.innerHTML = chessBoardHtml + '<div class="game-border__piece-test">aa</div>';
 
   let lettersTopFirst = lettersTop[0];
   lettersTopFirst.innerHTML = lettersHtml;
@@ -53,3 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   };
 });
+
+setPiecesOnChessBoard();
+console.log(PIECESONCHESSBOARD);
