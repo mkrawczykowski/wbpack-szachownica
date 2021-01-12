@@ -1,4 +1,4 @@
-import { LETTERS, NUMBERS, PIECESONCHESSBOARD } from './constants.js';
+import { PIECESONCHESSBOARD } from './constants.js';
 
 class Piece {
   constructor(type, color, col, row) {
@@ -7,10 +7,9 @@ class Piece {
     this.row = row;
     this.col = col;
   }
-
 }
 
-export default function setPiecesOnChessBoard() {
+function setPiecesOnChessBoard() {
   //white pieces are generated first
 
   //wieża
@@ -47,30 +46,60 @@ export default function setPiecesOnChessBoard() {
   //black pieces
 
   //wieża
-  PIECESONCHESSBOARD.A8 = new Piece('rook', 'white', 'A', 8);
-  PIECESONCHESSBOARD.H8 = new Piece('rook', 'white', 'H', 8);
+  PIECESONCHESSBOARD.A8 = new Piece('rook', 'black', 'A', 8);
+  PIECESONCHESSBOARD.H8 = new Piece('rook', 'black', 'H', 8);
 
   //skoczek
-  PIECESONCHESSBOARD.B8 = new Piece('knight', 'white', 'B', 8);
-  PIECESONCHESSBOARD.G8 = new Piece('knight', 'white', 'G', 8);
+  PIECESONCHESSBOARD.B8 = new Piece('knight', 'black', 'B', 8);
+  PIECESONCHESSBOARD.G8 = new Piece('knight', 'black', 'G', 8);
 
   //goniec
-  PIECESONCHESSBOARD.C8 = new Piece('bishop', 'white', 'C', 8);
-  PIECESONCHESSBOARD.F8 = new Piece('bishop', 'white', 'F', 8);
+  PIECESONCHESSBOARD.C8 = new Piece('bishop', 'black', 'C', 8);
+  PIECESONCHESSBOARD.F8 = new Piece('bishop', 'black', 'F', 8);
 
   //król
-  PIECESONCHESSBOARD.D8 = new Piece('king', 'white', 'D', 8);
+  PIECESONCHESSBOARD.D8 = new Piece('king', 'black', 'D', 8);
 
   //królowa
-  PIECESONCHESSBOARD.E8 = new Piece('queen', 'white', 'E', 8);
+  PIECESONCHESSBOARD.E8 = new Piece('queen', 'black', 'E', 8);
 
   //piony
-  PIECESONCHESSBOARD.A7 = new Piece('pawn', 'white', 'A', 7);
-  PIECESONCHESSBOARD.B7 = new Piece('pawn', 'white', 'B', 7);
-  PIECESONCHESSBOARD.C7 = new Piece('pawn', 'white', 'C', 7);
-  PIECESONCHESSBOARD.D7 = new Piece('pawn', 'white', 'D', 7);
-  PIECESONCHESSBOARD.E7 = new Piece('pawn', 'white', 'E', 7);
-  PIECESONCHESSBOARD.F7 = new Piece('pawn', 'white', 'F', 7);
-  PIECESONCHESSBOARD.G7 = new Piece('pawn', 'white', 'G', 7);
-  PIECESONCHESSBOARD.H7 = new Piece('pawn', 'white', 'H', 7);
+  PIECESONCHESSBOARD.A7 = new Piece('pawn', 'black', 'A', 7);
+  PIECESONCHESSBOARD.B7 = new Piece('pawn', 'black', 'B', 7);
+  PIECESONCHESSBOARD.C7 = new Piece('pawn', 'black', 'C', 7);
+  PIECESONCHESSBOARD.D7 = new Piece('pawn', 'black', 'D', 7);
+  PIECESONCHESSBOARD.E7 = new Piece('pawn', 'black', 'E', 7);
+  PIECESONCHESSBOARD.F7 = new Piece('pawn', 'black', 'F', 7);
+  PIECESONCHESSBOARD.G7 = new Piece('pawn', 'black', 'G', 7);
+  PIECESONCHESSBOARD.H7 = new Piece('pawn', 'black', 'H', 7);
+
 }
+
+function stylesFromPositions(col, row) {
+
+  let leftFromCol;
+
+  switch (col) {
+    case 'A': leftFromCol = 0;
+      break;
+    case 'B': leftFromCol = '100px';
+      break;
+    case 'C': leftFromCol = '200px';
+      break;
+    case 'D': leftFromCol = '300px';
+      break;
+    case 'E': leftFromCol = '400px';
+      break;
+    case 'F': leftFromCol = '500px';
+      break;
+    case 'G': leftFromCol = '600px';
+      break;
+    case 'H': leftFromCol = '700px';
+      break;
+  }
+
+  return `style="left: ${leftFromCol};"`;
+
+}
+
+export { setPiecesOnChessBoard, stylesFromPositions };

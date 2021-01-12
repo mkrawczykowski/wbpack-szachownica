@@ -20,7 +20,7 @@ import '../scss/app.scss';
 import lettersHtml from './generate-letters.js';
 import numbersHtml from './generate-numbers.js';
 import chessBoardHtml from './generate-chess-board.js';
-import setPiecesOnChessBoard from './class-pieces.js';
+import { setPiecesOnChessBoard, stylesFromPositions } from './class-pieces.js';
 import { PIECESONCHESSBOARD } from './constants.js';
 
 let gameArea = document.getElementsByClassName('game-border');
@@ -32,7 +32,7 @@ let numbersRight = document.getElementsByClassName('chess-board__numbers--right'
 document.addEventListener("DOMContentLoaded", function () {
 
   let gameAreaFirst = gameArea[0];
-  gameAreaFirst.innerHTML = chessBoardHtml + '<div class="game-border__piece-test">aa</div>';
+  gameAreaFirst.innerHTML = chessBoardHtml;
 
   let lettersTopFirst = lettersTop[0];
   lettersTopFirst.innerHTML = lettersHtml;
@@ -53,7 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   };
+
+
+  setPiecesOnChessBoard();
+  console.log(PIECESONCHESSBOARD);
+
+  for (const property in PIECESONCHESSBOARD) {
+    console.log(`${property}: `);
+    gameAreaFirst.innerHTML += `<div class="game-border__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + "></div>";
+  }
 });
 
-setPiecesOnChessBoard();
-console.log(PIECESONCHESSBOARD);
