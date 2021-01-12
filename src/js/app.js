@@ -22,6 +22,7 @@ import numbersHtml from './generate-numbers.js';
 import chessBoardHtml from './generate-chess-board.js';
 import { setPiecesOnChessBoard, stylesFromPositions } from './class-pieces.js';
 import { PIECESONCHESSBOARD } from './constants.js';
+import possibleMoves from './piece-onclick.js';
 
 let gameArea = document.getElementsByClassName('game-border');
 let lettersTop = document.getElementsByClassName('chess-board__letters--top');
@@ -60,7 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (const property in PIECESONCHESSBOARD) {
     console.log(`${property}: `);
-    gameAreaFirst.innerHTML += `<div class="piece game-border__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}"></div>`;
+
+    gameAreaFirst.innerHTML += `<div class="piece game-border__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}" data-type="${PIECESONCHESSBOARD[property].type}"></div>`;
+
+
+    // console.log(`[data-column="${PIECESONCHESSBOARD[property].col}"][data-row="${PIECESONCHESSBOARD[property].row}"]`);
+    let singlePiece = `[data-column="${PIECESONCHESSBOARD[property].col}"][data-row="${PIECESONCHESSBOARD[property].row}"].game__column`;
+    console.log(document.querySelectorAll(singlePiece)[0]);
+    document.querySelectorAll(singlePiece)[0].classList.add('occupied');
   }
 
 
@@ -89,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (object.path[0].classList.contains('piece')) {
 
       object.path[0].classList.add('active');
+      console.log(possibleMoves(object.path[0]));
     }
   });
 
@@ -97,3 +106,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+// NAPISZ: POLE POWINNO DOSTAWAĆ PARAMETR INFORMUJĄCY, ŻE JEST ZAJĘTE. WTEDY NIE PODDŚWIETLI SIĘ, GDY AKTYWUJESZ FIGURĘ
