@@ -103,6 +103,15 @@
         @include piece-details;
         background: url("../images/bishop-white.png") no-repeat center center;
       }
+
+      .piece {
+        transition: 0.3s;
+
+        &.active {
+          transform: scale(1.3);
+          transition: 0.3s;
+        }
+      }
     }
   }
 }

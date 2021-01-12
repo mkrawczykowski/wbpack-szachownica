@@ -60,7 +60,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (const property in PIECESONCHESSBOARD) {
     console.log(`${property}: `);
-    gameAreaFirst.innerHTML += `<div class="game-border__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + "></div>";
+    gameAreaFirst.innerHTML += `<div class="piece game-border__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}"></div>`;
   }
+
+
+
+  let pieces = document.getElementsByClassName('piece');
+  console.log(pieces);
+
+  // nie działa, piece data-row zawsze wyrzuca 7 = klika we wszystkie pieces z klasą?
+
+  // for (var i = 0; i < pieces.length; i++) {
+  //   var piece = pieces[i];
+  //   piece.onclick = function () {
+  //     console.log(piece);
+  //   }
+  // }
+
+  document.addEventListener('click', function (object) {
+
+    //deaktywowanie podniesionej figury = usuwanie klasy active
+    for (var i = 0; i < pieces.length; i++) {
+      var piece = pieces[i];
+      piece.classList.remove('active');
+    }
+
+
+    if (object.path[0].classList.contains('piece')) {
+
+      object.path[0].classList.add('active');
+    }
+  });
+
+
+
+
 });
 
