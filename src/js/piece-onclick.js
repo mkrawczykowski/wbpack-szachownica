@@ -1,3 +1,5 @@
+import { LETTERS } from './constants.js';
+
 export default function possibleMoves(activePiece) {
   // return activePiece.dataset.type;
   switch (activePiece.dataset.type) {
@@ -26,4 +28,32 @@ export default function possibleMoves(activePiece) {
       }
     };
   }
+
+  function letterToNumber(letter) {
+    return LETTERS.indexOf(letter);
+
+  }
+
+  function numberToLetter(number) {
+    return LETTERS[number - 1];
+  }
+
+  function knightPossibleMovement() {
+    let nowRow = parseInt(activePiece.dataset.row);
+    let nowColumn = letterToNumber(activePiece.dataset.column) + 1;
+    let rookMovementField;
+
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 2)}"][data-row="${nowRow + 1}"]`);
+      rookMovementField[0].classList.add('possibleMove');
+    } catch { }
+    //down-right
+
+    try {
+      //down-left
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 2)}"][data-row="${nowRow + 1}"]`);
+      rookMovementField[0].classList.add('possibleMove');
+    } catch { }
+
+  };
 }
