@@ -46,22 +46,22 @@ function setPiecesOnChessBoard() {
   //black pieces
 
   //wieża
-  PIECESONCHESSBOARD.A8 = new Piece('rook', 'black', 'A', 8);
-  PIECESONCHESSBOARD.H8 = new Piece('rook', 'black', 'H', 8);
+  // PIECESONCHESSBOARD.A8 = new Piece('rook', 'black', 'A', 8);
+  // PIECESONCHESSBOARD.H8 = new Piece('rook', 'black', 'H', 8);
 
-  //skoczek
-  PIECESONCHESSBOARD.B8 = new Piece('knight', 'black', 'B', 8);
-  PIECESONCHESSBOARD.G8 = new Piece('knight', 'black', 'G', 8);
+  // //skoczek
+  // PIECESONCHESSBOARD.B8 = new Piece('knight', 'black', 'B', 8);
+  // PIECESONCHESSBOARD.G8 = new Piece('knight', 'black', 'G', 8);
 
-  //goniec
-  PIECESONCHESSBOARD.C8 = new Piece('bishop', 'black', 'C', 8);
-  PIECESONCHESSBOARD.F8 = new Piece('bishop', 'black', 'F', 8);
+  // //goniec
+  // PIECESONCHESSBOARD.C8 = new Piece('bishop', 'black', 'C', 8);
+  // PIECESONCHESSBOARD.F8 = new Piece('bishop', 'black', 'F', 8);
 
-  //król
-  PIECESONCHESSBOARD.D8 = new Piece('king', 'black', 'D', 8);
+  // //król
+  // PIECESONCHESSBOARD.D8 = new Piece('king', 'black', 'D', 8);
 
-  //królowa
-  PIECESONCHESSBOARD.E8 = new Piece('queen', 'black', 'E', 8);
+  // //królowa
+  // PIECESONCHESSBOARD.E8 = new Piece('queen', 'black', 'E', 8);
 
   //piony
   // PIECESONCHESSBOARD.A7 = new Piece('pawn', 'black', 'A', 7);
