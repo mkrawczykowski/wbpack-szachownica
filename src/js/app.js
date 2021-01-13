@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //wygaszanie zaznaczonych pól
     document.querySelectorAll('.game__column').forEach(elementColumn => {
       elementColumn.classList.remove('possibleMove');
+      elementColumn.classList.remove('possibleAttack');
     });
 
     if (object.path[0].classList.contains('piece')) {

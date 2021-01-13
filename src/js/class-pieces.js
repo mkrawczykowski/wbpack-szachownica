@@ -70,7 +70,7 @@ function setPiecesOnChessBoard() {
   // PIECESONCHESSBOARD.D7 = new Piece('pawn', 'black', 'D', 7);
   // PIECESONCHESSBOARD.E7 = new Piece('pawn', 'black', 'E', 7);
   // PIECESONCHESSBOARD.F7 = new Piece('pawn', 'black', 'F', 7);
-  // PIECESONCHESSBOARD.G7 = new Piece('pawn', 'black', 'G', 7);
+  PIECESONCHESSBOARD.G7 = new Piece('knight', 'white', 'D', 2);
   PIECESONCHESSBOARD.H7 = new Piece('rook', 'white', 'H', 8);
 
 }

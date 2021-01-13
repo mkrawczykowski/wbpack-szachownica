@@ -21,7 +21,6 @@ export default function possibleMoves(activePiece) {
 
     //highlighting fields horizontally
     let rookMovementRowFields = document.querySelectorAll(`[data-row="${activePiece.dataset.row}"].game__row`)[0].childNodes;
-    console.log(rookMovementRowFields);
     for (let x = 0; x < rookMovementRowFields.length; x++) {
       if (!rookMovementRowFields[x].classList.contains('occupied')) {
         rookMovementRowFields[x].classList.add('possibleMove');
@@ -43,17 +42,75 @@ export default function possibleMoves(activePiece) {
     let nowColumn = letterToNumber(activePiece.dataset.column) + 1;
     let rookMovementField;
 
+    //down-right
     try {
       rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 2)}"][data-row="${nowRow + 1}"]`);
-      rookMovementField[0].classList.add('possibleMove');
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      } else {
+        rookMovementField[0].classList.add('possibleAttack');
+      }
     } catch { }
-    //down-right
 
+    //down-left
     try {
-      //down-left
       rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 2)}"][data-row="${nowRow + 1}"]`);
-      rookMovementField[0].classList.add('possibleMove');
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      } else {
+        rookMovementField[0].classList.add('possibleAttack');
+      }
     } catch { }
+
+    //left-down
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 1)}"][data-row="${nowRow + 2}"]`);
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      }
+    } catch { }
+
+    //right-down
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 1)}"][data-row="${nowRow + 2}"]`);
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      }
+    } catch { }
+
+    //up-right
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 2)}"][data-row="${nowRow - 1}"]`);
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      }
+    } catch { }
+
+    //up-left
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 2)}"][data-row="${nowRow - 1}"]`);
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      }
+    } catch { }
+
+    //left-up
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 1)}"][data-row="${nowRow - 2}"]`);
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      }
+    } catch { }
+
+    //right-up
+    try {
+      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 1)}"][data-row="${nowRow - 2}"]`);
+      if (!rookMovementField[0].classList.contains('occupied')) {
+        rookMovementField[0].classList.add('possibleMove');
+      }
+    } catch { }
+
+
 
   };
 }
