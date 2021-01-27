@@ -5,6 +5,7 @@ export default function possibleMoves(activePiece) {
   switch (activePiece.dataset.type) {
     case 'rook': rookPossibleMovement(); break;
     case 'knight': knightPossibleMovement(); break;
+    case 'bishop': bishopPossibleMovement(); break;
   }
 
   function rookPossibleMovement() {
@@ -30,7 +31,6 @@ export default function possibleMoves(activePiece) {
 
   function letterToNumber(letter) {
     return LETTERS.indexOf(letter);
-
   }
 
   function numberToLetter(number) {
@@ -42,75 +42,113 @@ export default function possibleMoves(activePiece) {
     let nowColumn = letterToNumber(activePiece.dataset.column) + 1;
     let rookMovementField;
 
+    function highlightPossibleField(moveColumns, moveRows) {
+      try {
+        rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + moveColumns)}"][data-row="${nowRow + moveRows}"]`);
+        if (!rookMovementField[0].classList.contains('occupied')) {
+          rookMovementField[0].classList.add('possibleMove');
+        } else {
+          if (!rookMovementField[0].classList.contains(`occupied-${activePiece.dataset.color}`)) {
+            rookMovementField[0].classList.add('possibleAttack');
+          }
+        }
+      } catch { }
+    };
+
+    highlightPossibleField(1, 2);
+    highlightPossibleField(2, 1);
+    highlightPossibleField(-1, 2);
+    highlightPossibleField(-2, 1);
+    highlightPossibleField(1, -2);
+    highlightPossibleField(-1, -2);
+    highlightPossibleField(-2, -1);
+    highlightPossibleField(2, -1);
+
+
+
     //down-right
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 2)}"][data-row="${nowRow + 1}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      } else {
-        rookMovementField[0].classList.add('possibleAttack');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn + 2)}"][data - row="${nowRow + 1}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleAttack');
+    //   }
+    // } catch { }
 
     //down-left
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 2)}"][data-row="${nowRow + 1}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      } else {
-        rookMovementField[0].classList.add('possibleAttack');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn - 2)}"][data - row="${nowRow + 1}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleAttack');
+    //   }
+    // } catch { }
 
     //left-down
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 1)}"][data-row="${nowRow + 2}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn - 1)}"][data - row="${nowRow + 2}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleAttack');
+    //   }
+    // } catch { }
 
     //right-down
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 1)}"][data-row="${nowRow + 2}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn + 1)}"][data - row="${nowRow + 2}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleAttack');
+    //   }
+    // } catch { }
 
     //up-right
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 2)}"][data-row="${nowRow - 1}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn + 2)}"][data - row="${nowRow - 1}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleAttack');
+    //   }
+    // } catch { }
 
     //up-left
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 2)}"][data-row="${nowRow - 1}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn - 2)}"][data - row="${nowRow - 1}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleAttack');
+    //   }
+    // } catch { }
 
     //left-up
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn - 1)}"][data-row="${nowRow - 2}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      }
-    } catch { }
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn - 1)}"][data - row="${nowRow - 2}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   }
+    // } catch { }
 
     //right-up
-    try {
-      rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + 1)}"][data-row="${nowRow - 2}"]`);
-      if (!rookMovementField[0].classList.contains('occupied')) {
-        rookMovementField[0].classList.add('possibleMove');
-      }
-    } catch { }
-
-
+    // try {
+    //   rookMovementField = document.querySelectorAll(`[data - column= "${numberToLetter(nowColumn + 1)}"][data - row="${nowRow - 2}"]`);
+    //   if (!rookMovementField[0].classList.contains('occupied')) {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   } else {
+    //     rookMovementField[0].classList.add('possibleMove');
+    //   }
+    // } catch { }
 
   };
+
+  function bishopPossibleMovement() {
+
+  }
 }

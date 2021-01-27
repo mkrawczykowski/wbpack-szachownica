@@ -46,7 +46,7 @@ function setPiecesOnChessBoard() {
   //black pieces
 
   //wieża
-  // PIECESONCHESSBOARD.A8 = new Piece('rook', 'black', 'A', 8);
+  PIECESONCHESSBOARD.A8 = new Piece('rook', 'black', 'E', 4);
   // PIECESONCHESSBOARD.H8 = new Piece('rook', 'black', 'H', 8);
 
   // //skoczek

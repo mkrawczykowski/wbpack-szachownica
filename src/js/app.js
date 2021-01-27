@@ -58,13 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
   setPiecesOnChessBoard();
 
   for (const property in PIECESONCHESSBOARD) {
-    console.log(`${property}: `);
 
-    gameAreaFirst.innerHTML += `<div class="piece game-area__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}" data-type="${PIECESONCHESSBOARD[property].type}"></div>`;
+    gameAreaFirst.innerHTML += `<div class="piece game-area__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}" data-type="${PIECESONCHESSBOARD[property].type}" data-color="${PIECESONCHESSBOARD[property].color}"></div>`;
 
     let singlePiece = `[data-column="${PIECESONCHESSBOARD[property].col}"][data-row="${PIECESONCHESSBOARD[property].row}"].game__column`;
     console.log(document.querySelectorAll(singlePiece)[0]);
     document.querySelectorAll(singlePiece)[0].classList.add('occupied');
+    document.querySelectorAll(singlePiece)[0].classList.add(`occupied-${PIECESONCHESSBOARD[property].color}`);
   }
 
   let pieces = document.getElementsByClassName('piece');
