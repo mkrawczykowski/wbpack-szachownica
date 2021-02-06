@@ -22,17 +22,12 @@ export default function possibleMoves(activePiece) {
     for (let possibleMovement = possibleMovementStart; possibleMovement < possibleMovementEnd; possibleMovement++) {
 
       let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(pieceColumn) + possibleMovement * increaseColumn)}"][data-row="${parseInt(pieceRow) + possibleMovement * increaseRow}"]`);
-
-      console.log(`pieceColumn: ${numberToLetter(letterToNumber(pieceColumn))}, possibleMovement: ${possibleMovement}, increaseColumn: ${increaseColumn}`);
-      console.log(`pieceRow: ${pieceRow}, possibleMovement: ${possibleMovement}, increaseRow: ${increaseRow}`);
-
       try {
         // possibleField[0].classList.add('possibleMove');
 
         if (!possibleField[0].classList.contains('occupied')) {
           possibleField[0].classList.add('possibleMove');
         } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color}`)) {
-          console.log(activePiece.dataset.color);
           possibleField[0].classList.add('possibleAttack');
           break;
         } else break;

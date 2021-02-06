@@ -75,32 +75,39 @@ function setPiecesOnChessBoard() {
 
 }
 
-function stylesFromPositions(col, row) {
+function stylesFromPositions(leftOrTop, colRow) {
 
-  let leftFromCol;
+  if (leftOrTop == 'left') {
+    let leftFromCol;
 
-  switch (col) {
-    case 'A': leftFromCol = 0;
-      break;
-    case 'B': leftFromCol = '100px';
-      break;
-    case 'C': leftFromCol = '200px';
-      break;
-    case 'D': leftFromCol = '300px';
-      break;
-    case 'E': leftFromCol = '400px';
-      break;
-    case 'F': leftFromCol = '500px';
-      break;
-    case 'G': leftFromCol = '600px';
-      break;
-    case 'H': leftFromCol = '700px';
-      break;
+    switch (colRow) {
+      case 'A': leftFromCol = 0;
+        break;
+      case 'B': leftFromCol = '100px';
+        break;
+      case 'C': leftFromCol = '200px';
+        break;
+      case 'D': leftFromCol = '300px';
+        break;
+      case 'E': leftFromCol = '400px';
+        break;
+      case 'F': leftFromCol = '500px';
+        break;
+      case 'G': leftFromCol = '600px';
+        break;
+      case 'H': leftFromCol = '700px';
+        break;
+    }
+    return leftFromCol;
+
+  } else if (leftOrTop == 'top') {
+
+    let topFromRow = colRow * 100 - 100 + 'px';
+    return topFromRow;
   }
 
-  let topFromRow = row * 100 - 100 + 'px';
 
-  return `style="left: ${leftFromCol}; top: ${topFromRow};"`;
+
 
 }
 

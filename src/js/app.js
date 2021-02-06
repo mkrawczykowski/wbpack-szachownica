@@ -59,7 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (const property in PIECESONCHESSBOARD) {
 
-    gameAreaFirst.innerHTML += `<div class="piece game-area__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"` + stylesFromPositions(`${PIECESONCHESSBOARD[property].col}`, `${PIECESONCHESSBOARD[property].row}`) + ` data-column="${PIECESONCHESSBOARD[property].col}" data-row="${PIECESONCHESSBOARD[property].row}" data-type="${PIECESONCHESSBOARD[property].type}" data-color="${PIECESONCHESSBOARD[property].color}"></div>`;
+    gameAreaFirst.innerHTML += `<div class="piece game-area__${PIECESONCHESSBOARD[property].type}-${PIECESONCHESSBOARD[property].color}"
+    style="left:${stylesFromPositions('left', PIECESONCHESSBOARD[property].col)}; 
+    top: ${stylesFromPositions('top', PIECESONCHESSBOARD[property].row)};" 
+    data-column="${PIECESONCHESSBOARD[property].col}" 
+    data-row="${PIECESONCHESSBOARD[property].row}" 
+    data-type="${PIECESONCHESSBOARD[property].type}" 
+    data-color="${PIECESONCHESSBOARD[property].color}"></div>`;
 
     let singlePiece = `[data-column="${PIECESONCHESSBOARD[property].col}"][data-row="${PIECESONCHESSBOARD[property].row}"].game__column`;
     console.log(document.querySelectorAll(singlePiece)[0]);
@@ -68,15 +74,54 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(singlePiece)[0].setAttribute('data-color', PIECESONCHESSBOARD[property].color);
   }
 
-  let pieces = document.getElementsByClassName('piece');
 
+
+
+
+
+  //activating piece
+
+  let pieces = document.getElementsByClassName('piece');
+  let activePiece;
   document.addEventListener('click', function (object) {
+
+    if (object.path[0].classList.contains('piece')) {
+
+      if (activePiece) {
+        if (
+          object.path[0].dataset.column == activePiece.dataset.column && object.path[0].dataset.row == activePiece.dataset.row && object.path[0].dataset.color == activePiece.dataset.color) {
+        }
+        // console.log(object.path[0].dataset.column);
+        // console.log(object.path[0].dataset.row);
+        // console.log(object.path[0].dataset.color);
+        // console.log(activePiece.dataset.column);
+        // console.log(activePiece.dataset.row);
+        // console.log(activePiece.dataset.color);
+      } else {
+        activePiece = object.path[0];
+        console.log(activePiece);
+      }
+    } else if (object.path[0].classList.contains('possibleMove')) {
+      if (activePiece) {
+        let fieldColumn = object.path[0].dataset.column;
+        let fieldRow = object.path[0].dataset.row;
+        activePiece.style.left = '600px';
+        activePiece.classList.remove('active');
+
+      }
+
+
+    }
+
+
+
 
     //deaktywowanie podniesionej figury = usuwanie klasy active
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i];
-      piece.classList.remove('active');
+      // piece.classList.remove('active');
     }
+
 
     //wygaszanie zaznaczonych pól
     document.querySelectorAll('.game__column').forEach(elementColumn => {
@@ -84,11 +129,13 @@ document.addEventListener("DOMContentLoaded", function () {
       elementColumn.classList.remove('possibleAttack');
     });
 
-    if (object.path[0].classList.contains('piece')) {
 
+    if (object.path[0].classList.contains('piece')) {
       object.path[0].classList.add('active');
       possibleMoves(object.path[0]);
     }
+
+
   });
 
 });
