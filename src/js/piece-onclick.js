@@ -49,11 +49,11 @@ export default function possibleMoves(activePiece) {
 
     function highlightPossibleField(moveColumns, moveRows) {
       try {
-        rookMovementField = document.querySelectorAll(`[data-column= "${numberToLetter(nowColumn + moveColumns)}"][data-row="${nowRow + moveRows}"]`);
+        rookMovementField = document.querySelectorAll(`[data-column="${numberToLetter(nowColumn + moveColumns)}"][data-row="${nowRow + moveRows}"]`);
         if (!rookMovementField[0].classList.contains('occupied')) {
           rookMovementField[0].classList.add('possibleMove');
         } else {
-          if (!rookMovementField[0].classList.contains(`occupied - ${activePiece.dataset.color} `)) {
+          if (!rookMovementField[0].classList.contains(`occupied-${activePiece.dataset.color}`)) {
             rookMovementField[0].classList.add('possibleAttack');
           }
         }
