@@ -123,7 +123,8 @@ export default function possibleMoves(activePiece) {
 
         if (!possibleField[0].classList.contains('occupied')) {
           possibleField[0].classList.add('possibleMove');
-        } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color} `)) {
+        } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color}`)) {
+          console.log(activePiece.dataset.color);
           possibleField[0].classList.add('possibleAttack');
           break;
         } else break;
