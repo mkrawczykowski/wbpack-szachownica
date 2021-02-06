@@ -190,61 +190,27 @@ export default function possibleMoves(activePiece) {
 
   };
 
-  function linearMovement(pieceColumn, pieceRow, possibleMovementStart, possibleMovementEnd, incrementDecrement, increaseColumn, increaseRow,) {
+  function linearMovement(pieceColumn, pieceRow, possibleMovementStart, possibleMovementEnd, increaseColumn, increaseRow,) {
 
+    for (let possibleMovement = possibleMovementStart; possibleMovement < possibleMovementEnd; possibleMovement++) {
 
+      let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(pieceColumn) + possibleMovement * increaseColumn)}"][data-row="${parseInt(pieceRow) + possibleMovement * increaseRow}"]`);
 
-    if (incrementDecrement == 'increment') {
-      for (let possibleMovement = possibleMovementStart; possibleMovement < possibleMovementEnd; possibleMovement++) {
-        // let isDiagonalPiece;
-        // if (diagonally) {
-        //   isDiagonalPiece = possibleMovement;
-        // } else {
-        //   isDiagonalPiece = 0;
-        // }
+      console.log(`pieceColumn: ${numberToLetter(letterToNumber(pieceColumn))}, possibleMovement: ${possibleMovement}, increaseColumn: ${increaseColumn}`);
+      console.log(`pieceRow: ${pieceRow}, possibleMovement: ${possibleMovement}, increaseRow: ${increaseRow}`);
 
-        let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(pieceColumn) + possibleMovement * increaseColumn)}"][data-row="${parseInt(pieceRow) + possibleMovement * increaseRow}"]`);
+      try {
+        // possibleField[0].classList.add('possibleMove');
 
-        console.log(`pieceColumn: ${numberToLetter(letterToNumber(pieceColumn))}, possibleMovement: ${possibleMovement}, increaseColumn: ${increaseColumn}`);
-        console.log(`pieceRow: ${pieceRow}, possibleMovement: ${possibleMovement}, increaseRow: ${increaseRow}`);
+        if (!possibleField[0].classList.contains('occupied')) {
+          possibleField[0].classList.add('possibleMove');
+        } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color} `)) {
+          possibleField[0].classList.add('possibleAttack');
+          break;
+        } else break;
 
-        try {
-          // possibleField[0].classList.add('possibleMove');
+      } catch { }
 
-          if (!possibleField[0].classList.contains('occupied')) {
-            possibleField[0].classList.add('possibleMove');
-          } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color} `)) {
-            possibleField[0].classList.add('possibleAttack');
-            break;
-          } else break;
-
-        } catch { }
-
-      }
-    } else {
-      // -1, -8
-      // for (let possibleMovement = possibleMovementStart; possibleMovement > possibleMovementEnd; possibleMovement--) {
-      //   let isDiagonalPiece;
-      //   if (diagonally) {
-      //     isDiagonalPiece = possibleMovement;
-      //   } else {
-      //     isDiagonalPiece = 0;
-      //   }
-
-      //   let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(pieceColumn) + isDiagonalPiece + 1)}"][data-row="${parseInt(pieceRow) + possibleMovement * -1}"]`);
-
-      //   try {
-
-      //     if (!possibleField[0].classList.contains('occupied')) {
-      //       possibleField[0].classList.add('possibleMove');
-      //     } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color}`)) {
-      //       console.log();
-      //       possibleField[0].classList.add('possibleAttack');
-      //       break;
-      //     } else break;
-
-      //   } catch { };
-      // }
     }
   }
 
@@ -253,7 +219,16 @@ export default function possibleMoves(activePiece) {
     let bishopRow = activePiece.dataset.row;
 
     //pieceColumn, pieceRow, possibleMovementStart, possibleMovementEnd, incrementDecrement
-    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 'increment', 1, 1);
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 1, 1); //right+down
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 1, 0); //right
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 1, -1); // right+up
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 0, 1); // down
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, -1, 1); // down+left
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, -1, 0); // left
+    linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, -1, -1); // left
+
+
+
     // linearMovement(activePiece.dataset.column, activePiece.dataset.row, -1, -8, 'decrement', 1);
     // for (let possibleMovement = 1; possibleMovement < 7; possibleMovement++) {
     //   let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(bishopColumn) + possibleMovement + 1)}"][data-row="${parseInt(bishopRow) + possibleMovement}"]`);
