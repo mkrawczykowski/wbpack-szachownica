@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(document.querySelectorAll(singlePiece)[0]);
     document.querySelectorAll(singlePiece)[0].classList.add('occupied');
     document.querySelectorAll(singlePiece)[0].classList.add(`occupied-${PIECESONCHESSBOARD[property].color}`);
+    document.querySelectorAll(singlePiece)[0].setAttribute('data-color', PIECESONCHESSBOARD[property].color);
   }
 
   let pieces = document.getElementsByClassName('piece');
