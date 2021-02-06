@@ -52,21 +52,6 @@ export default function possibleMoves(activePiece) {
     let rookColor = activePiece.dataset.color;
     let rookRowWalker = rookRow;
     let rookColumnWalker = rookColumn;
-    // console.log(`rookRow: ${rookRow}`);
-    // console.log(`rookRowWalker: ${rookRowWalker}`);
-    // console.log(`rookColumn: ${rookColumn}`);
-    // console.log(testingField(rookColumnWalker, rookRowWalker));
-    // do {
-    //   rookRowWalker++;
-    //   if (testingField(rookColumnWalker, rookRowWalker) != 'occupied') {
-    //     colorField(rookColumnWalker, rookRowWalker, 'possibleMove');
-    //   } else {
-    //     colorField(rookColumnWalker, rookRowWalker, 'possibleAttack');
-    //   }
-
-    // } while (rookRowWalker <= 8 && testingField(rookColumnWalker, rookRowWalker) != 'occupied')
-
-
 
     rookRowWalker = rookRow;
     rookColumnWalker = rookColumn;
@@ -81,72 +66,6 @@ export default function possibleMoves(activePiece) {
         colorField(rookColumnWalker, rookRowWalker, 'possibleAttack');
       }
     } while (rookRowWalker >= 1 && testingField(rookColumnWalker, rookRowWalker, rookColor) != 'occupied-mate' || testingField(rookColumnWalker, rookRowWalker, rookColor) != 'occupied-enemy');
-
-
-    // //vertical down
-    // let rookRowWalker = parseInt(rookRow) + 1;
-    // let rookColumnWalker = rookColumn;
-
-    // while (rookRowWalker <= 8 && testingField(rookColumnWalker, rookRowWalker) != 'occupied') {
-    //   let rookPotentialField = document.querySelectorAll(`[data-row="${rookRowWalker}"][data-column="${rookColumnWalker}"].game__column`);
-    //   rookPotentialField[0].classList.add('possibleMove');
-    //   rookRowWalker++;
-    // }
-
-
-
-
-    // //vertical up
-    // rookRowWalker = parseInt(rookRow) - 1;
-    // rookColumnWalker = rookColumn;
-
-    // while (rookRowWalker >= 1 && testingField(rookColumnWalker, rookRowWalker) != 'occupied') {
-    //   let rookPotentialField = document.querySelectorAll(`[data-row="${rookRowWalker}"][data-column="${rookColumnWalker}"].game__column`);
-    //   rookPotentialField[0].classList.add('possibleMove');
-    //   rookRowWalker--;
-    // }
-
-    //go top
-    // while (s) {
-
-    // }
-
-
-    // for (let x = 0; x < rookMovementColumn.length; x++) {
-    //   // console.log(rookMovementColumn[x]);
-    //   if (!rookMovementColumn[x].classList.contains('occupied')) {
-    //     rookMovementColumn[x].classList.add('possibleMove');
-    //   }
-    // };
-
-    //highlighting fields horizontally
-    // let possibleField = document.querySelectorAll(`[data - row= "${activePiece.dataset.row}"].game__row`)[0].childNodes;
-    // // for (let x = 0; x < possibleField.length; x++) {
-    // //   // if (!rookMovementRowFields[x].classList.contains('occupied')) {
-    // //   //   rookMovementRowFields[x].classList.add('possibleMove');
-    // //   // }
-    // // };
-    // let x = letterToNumber(activePiece.dataset.column) - 1;
-
-    // while (!possibleField[x].classList.contains('occupied') || !possibleField[x].classList.contains(`occupied - ${ activePiece.dataset.color }`)) {
-    //   try {
-
-    //     if (!possibleField[x].classList.contains('occupied')) {
-    //       possibleField[x].classList.add('possibleMove');
-    //     } else if (!possibleField[x].classList.contains(`occupied - ${ activePiece.dataset.color }`)) {
-    //       possibleField[x].classList.add('possibleAttack');
-    //     };
-    //     console.log(`x: ${ x }, try catch end, ${ possibleField[x].classList } `);
-    //   } catch { };
-
-
-    //   try {
-    //     x--;
-    //   } catch { };
-    //   console.log(x);
-    // }
-
-
 
     ifFieldExists('A', 1);
 
@@ -215,10 +134,7 @@ export default function possibleMoves(activePiece) {
   }
 
   function bishopPossibleMovement() {
-    let bishopColumn = activePiece.dataset.column;
-    let bishopRow = activePiece.dataset.row;
 
-    //pieceColumn, pieceRow, possibleMovementStart, possibleMovementEnd, incrementDecrement
     linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 1, 1); //right+down
     linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 1, 0); //right
     linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, 1, -1); // right+up
@@ -226,48 +142,6 @@ export default function possibleMoves(activePiece) {
     linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, -1, 1); // down+left
     linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, -1, 0); // left
     linearMovement(activePiece.dataset.column, activePiece.dataset.row, 1, 7, -1, -1); // left
-
-
-
-    // linearMovement(activePiece.dataset.column, activePiece.dataset.row, -1, -8, 'decrement', 1);
-    // for (let possibleMovement = 1; possibleMovement < 7; possibleMovement++) {
-    //   let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(bishopColumn) + possibleMovement + 1)}"][data-row="${parseInt(bishopRow) + possibleMovement}"]`);
-
-    //   try {
-    //     // possibleField[0].classList.add('possibleMove');
-
-    //     if (!possibleField[0].classList.contains('occupied')) {
-    //       possibleField[0].classList.add('possibleMove');
-    //     } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color} `)) {
-    //       possibleField[0].classList.add('possibleAttack');
-    //       break;
-    //     } else break;
-
-    //   } catch { }
-
-    // }
-
-    // for (let possibleMovement = -1; possibleMovement > -8; possibleMovement--) {
-    //   let possibleField = document.querySelectorAll(`[data-column="${numberToLetter(letterToNumber(bishopColumn) + possibleMovement + 1)}"][data-row="${parseInt(bishopRow) + possibleMovement}"]`);
-
-    //   try {
-
-    //     if (!possibleField[0].classList.contains('occupied')) {
-    //       possibleField[0].classList.add('possibleMove');
-    //     } else if (!possibleField[0].classList.contains(`occupied-${activePiece.dataset.color}`)) {
-    //       console.log();
-    //       possibleField[0].classList.add('possibleAttack');
-    //       break;
-    //     } else break;
-
-    //   } catch { };
-
-
-    // }
-
-
-
-
 
   }
 }
