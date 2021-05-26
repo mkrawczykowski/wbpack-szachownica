@@ -1,5 +1,6 @@
 # wbpack-szachownica
 Chess - JS classes & object exercises
+
 What works for now:
 - checcboard is generated in JS and pieces are placed on it in JS, too
 - picking up of pieces
