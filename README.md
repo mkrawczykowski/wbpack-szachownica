@@ -13,4 +13,4 @@ see, thiss chessboard consists of two layers: a layer with chess fields and anot
 The solution:
 a function - "a translator" - to communicate both layers and share data between them.
 
-demo: http://webpack-szachownica.stronyireszta.pl/
+demo: https://webpack-szachownica.stronyireszta.pl/
