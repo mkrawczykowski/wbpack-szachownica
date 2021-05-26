@@ -10,6 +10,6 @@ What works for now:
 see, thiss chessboard consists of two layers: a layer with chess fields and another one - with figures. Objects on those layers (fields and figures) store information in data- atribute and in classes. When an in-game event occurs (like picking a figure), this data is transfered from one layer to another. That's where I have some problems to implement changes.
 
 The solution:
-a function that I call "a translator" to communicate both layers and share data between them.
+a function - "a translator" - to communicate both layers and share data between them.
 
 demo: http://webpack-szachownica.stronyireszta.pl/
